@@ -11,20 +11,17 @@
 
 
 
-/* #app {
-  max-width: 100%;
-  margin: 0 auto;
-  padding: 2rem;
-  font-weight: normal;
-} */
+#app {
+  background-color: #9b9797;
+}
 
 
-@media (hover: hover) {
+/* @media (hover: hover) {
   a:hover {
     font-weight: bold;
     transition:  0.2s;
   }
-}
+} */
 
 /* @media (min-width: 1024px) {
   body {
