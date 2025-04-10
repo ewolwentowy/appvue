@@ -26,15 +26,11 @@
 						>
 					</li>
 					<li class="nav-item">
-						<router-link to="/vehicles" class="text-decoration-none"
-							>Vehicles</router-link
+						<router-link to="/species" class="text-decoration-none"
+							>Species</router-link
 						>
 					</li>
 				</ul>
-				<!-- <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form> -->
 			</div>
 		</div>
 	</nav>
@@ -45,28 +41,32 @@
 <style scoped>
 .navbar {
 	top: 0%;
-	height: 60px;
 	display: flex;
 	align-items: center;
-
+	height: 60px;
 	text-decoration: none;
 }
 .text-decoration-none {
 	display: flex;
-	transition: color 0.3s;
 	color: rgb(230, 208, 83);
+	transition: 0.3s;
 }
 .nav-item {
-	font-size: 18px;
-	margin-left: 20px;
 	padding: 0 20px;
+	margin-left: 20px;
+	font-size: 18px;
 }
 .container-fluid {
+	padding-left: 15px;
 	font-size: 22px;
 	font-weight: bold;
-	padding-left: 15px;
 }
 .text-decoration-none:hover {
-	color: rgb(248, 250, 235);
+	text-shadow: 0px 0px 3px rgb(240, 226, 39);
+	color: rgb(240, 226, 39);
+	transform: scale(1.2);
+}
+.navbar-toggler {
+	border-color: rgb(230, 208, 83);
 }
 </style>

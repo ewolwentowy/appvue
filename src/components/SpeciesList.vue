@@ -1,39 +1,31 @@
 <template>
 	<div class="container-fluid px-4 text-center">
-		<h2 class="text-center my-4">List of planets</h2>
+		<h2 class="text-center my-4">Species list</h2>
 		<div class="row">
 			<div
-				v-for="(planet, index) in planets"
+				v-for="(type, index) in species"
 				:key="index"
-				class="list-unstyled  col-sm-12 col-md-4 col-lg-3"
+				class="list-unstyled col-sm-12 col-md-4 col-lg-3"
 			>
 				<router-link
-					:to="`/planets/${index + 1}`"
+					:to="`/species/${index + 1}`"
 					class="text-decoration-none btn"
-					
 				>
-					{{ planet.name }}
+					{{ type.name }}
 				</router-link>
 			</div>
 		</div>
 	</div>
-
-  
-
-
 </template>
 
 <script setup>
 import { ref, onMounted } from "vue";
 
-
-const planets = ref([]);
-
-
+const species = ref([]);
 
 async function getData() {
 	try {
-		const url = "https://swapi.info/api/planets";
+		const url = "https://swapi.info/api/species";
 		const response = await fetch(url);
 		if (!response.ok) {
 			throw new Error(`Response status: ${response.status}`);
@@ -41,26 +33,21 @@ async function getData() {
 
 		const json = await response.json();
 
-		class Planet {
-			constructor(name, urlPlanet) {
+		class Type {
+			constructor(name, urlType) {
 				this.name = name;
-				this.url = urlPlanet;
+				this.url = urlType;
 			}
 		}
-		json.forEach((planetData) => {
-			const planet = new Planet(planetData.name, planetData.url);
+		json.forEach((typeData) => {
+			const type = new Type(typeData.name, typeData.url);
 
-			planets.value.push(planet);
+			species.value.push(type);
 		});
 	} catch (error) {
 		console.error(error.message);
 	}
 }
-
-
-
-
-
 
 onMounted(getData);
 </script>
@@ -69,18 +56,17 @@ onMounted(getData);
 h2 {
 	color: rgb(255, 232, 31);
 }
-.container-fluid{
+.container-fluid {
 	background-color: #30303033;
-
 }
+
 .list-unstyled {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	margin: 10px 10px;
+	margin: 10px 5px;
 	height: 50px;
 	text-align: center;
-
 }
 .row {
 	display: flex;

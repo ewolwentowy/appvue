@@ -52,11 +52,7 @@
 
 *,
 *::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-  font-weight: normal;
-}
+
 
 html, body, #app {
   box-sizing: border-box;

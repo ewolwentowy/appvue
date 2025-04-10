@@ -1,55 +1,68 @@
 <template>
-	<div v-if="person" class="main">
-		<h2>Character data</h2>
+	<div v-if="species" class="main">
+		<h2>Species data</h2>
 		<div>
 			<table>
 				<tr>
-					<td>Height:</td>
-					<td>{{ person.height }}</td>
+					<td>Species:</td>
+					<td>{{ species.name }}</td>
 				</tr>
 				<tr>
-					<td>Mass:</td>
-					<td>{{ person.mass }}</td>
-				</tr>
-				<tr>
-					<td>Hair color:</td>
+					<td>Classification:</td>
 					<td>
 						{{
-							person.hair_color.charAt(0).toUpperCase() +
-							person.hair_color.slice(1)
+							species.classification.charAt(0).toUpperCase() +
+							species.classification.slice(1)
 						}}
 					</td>
 				</tr>
 				<tr>
-					<td>Skin color:</td>
+					<td>Designation:</td>
 					<td>
 						{{
-							person.skin_color.charAt(0).toUpperCase() +
-							person.skin_color.slice(1)
+							species.designation.charAt(0).toUpperCase() +
+							species.designation.slice(1)
 						}}
 					</td>
 				</tr>
 				<tr>
-					<td>Eye color:</td>
+					<td>Average height:</td>
+					<td>{{ species.average_height }}</td>
+				</tr>
+				<tr>
+					<td>Skin colors:</td>
 					<td>
 						{{
-							person.eye_color.charAt(0).toUpperCase() +
-							person.eye_color.slice(1)
+							species.skin_colors.charAt(0).toUpperCase() +
+							species.skin_colors.slice(1)
 						}}
 					</td>
 				</tr>
 				<tr>
-					<td>Birth year:</td>
-					<td>{{ person.birth_year }}</td>
+					<td>Hair colors:</td>
+					<td>
+						{{
+							species.hair_colors.charAt(0).toUpperCase() +
+							species.hair_colors.slice(1)
+						}}
+					</td>
 				</tr>
 				<tr>
-					<td>Gender:</td>
+					<td>Eye colors:</td>
 					<td>
-						{{ person.gender.charAt(0).toUpperCase() + person.gender.slice(1) }}
+						{{
+							species.eye_colors.charAt(0).toUpperCase() +
+							species.eye_colors.slice(1)
+						}}
 					</td>
+				</tr>
+				<tr>
+					<td>Average lifespan:</td>
+					<td>{{ species.average_lifespan }}</td>
 				</tr>
 			</table>
-			<router-link to="/people" class="btn text-decoration-none">
+
+			<router-link to="/species" class="btn text-decoration-none">
 				Back to the list
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
@@ -76,20 +89,20 @@
 import { onMounted, ref } from "vue";
 import { useRoute } from "vue-router";
 
-const person = ref();
+const species = ref();
 const route = useRoute();
 
 const id = route.params.id;
 async function getData() {
 	try {
-		const url = `https://swapi.info/api/people/${id}`;
+		const url = `https://swapi.info/api/species/${id}`;
 		const response = await fetch(url);
 		if (!response.ok) {
 			throw new Error(`Response status: ${response.status}`);
 		}
 
 		const json = await response.json();
-		person.value = json;
+		species.value = json;
 	} catch (error) {
 		console.error(error.message);
 	}
@@ -103,13 +116,14 @@ onMounted(getData);
 	height: 85vh;
 	background-color: #30303033;
 }
+
 h2 {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	margin: 10px;
-	color: rgb(255, 232, 31);
 	letter-spacing: 0.1rem;
+	color: rgb(255, 232, 31);
 }
 div {
 	display: flex;
@@ -117,9 +131,9 @@ div {
 	align-items: center;
 	flex-direction: column;
 	margin: 5px;
-	color: rgb(255, 232, 31);
 	font-size: 1.4rem;
 	letter-spacing: 0.1rem;
+	color: rgb(255, 232, 31);
 }
 td {
 	padding: 5px 20px;
@@ -128,8 +142,8 @@ td {
 .btn {
 	margin: 20px;
 	padding: 10px 20px;
-	color: rgb(255, 232, 31);
 	font-size: 18px;
+	color: rgb(255, 232, 31);
 	border: 1px solid rgb(255, 232, 31);
 	border-radius: 5px;
 	box-shadow: 1px 1px 2px rgb(255, 232, 31);

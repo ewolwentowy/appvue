@@ -1,33 +1,13 @@
-@import './base.css';
+@import "./base.css";
 
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  max-height: 100%;
-  
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	max-height: 100%;
 }
-
-
-
 
 #app {
-  background-color: #9b9797;
+	background-color: #30303000;
+	background-image: url("../assets/star-wars-backgrounds-25_bc15ec98.jpeg");
 }
-
-
-/* @media (hover: hover) {
-  a:hover {
-    font-weight: bold;
-    transition:  0.2s;
-  }
-} */
-
-/* @media (min-width: 1024px) {
-  body {
-    display: flex;
-    place-items: center;
-  }
-
-  
-} */
