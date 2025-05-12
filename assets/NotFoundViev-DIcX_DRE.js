@@ -1,0 +1,1 @@
+import{_ as e,c as o,o as c}from"./index-CVIBC3c0.js";const t={};function n(r,_){return c(),o("div",null,"Not Found 404")}const s=e(t,[["render",n],["__scopeId","data-v-8b225831"]]);export{s as default};
