@@ -36,7 +36,6 @@ div {
 h1 {
 	display: flex;
 	justify-content: center;
-	margin: 20px;
 	padding: 20px;
 	color: rgb(255, 232, 31);
 }

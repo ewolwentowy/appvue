@@ -1,12 +1,12 @@
 import { createRouter, createWebHistory } from "vue-router";
+const People = () => import('../views/People.vue') ;
+const Planets = () => import('../views/Planets.vue') ;
+const Species = () => import('../views/Species.vue') ;
 import Home from "../views/Home.vue";
-import People from "../views/People.vue";
-import Planets from "../views/Planets.vue";
 import PeopleDetails from "@/components/PeopleDetails.vue";
 import NotFoundViev from "@/components/NotFoundViev.vue";
 import PlanetDetails from "@/components/PlanetDetails.vue";
 import SpeciesDetails from "@/components/SpeciesDetails.vue";
-import Species from "@/views/Species.vue";
 
 const router = createRouter({
 	history: createWebHistory(import.meta.env.BASE_URL),
@@ -49,7 +49,7 @@ const router = createRouter({
 		{
 			path: "/:pathName(.*)",
 			name: "NotFound",
-			component: () => import("@/components/NotFoundViev.vue"),
+			component: NotFoundViev,
 		},
 	],
 });

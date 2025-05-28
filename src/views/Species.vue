@@ -1,9 +1,22 @@
 <template>
-<SpeciesList/>
+<AsyncComp/>
 </template>
 
 <script setup>
-import SpeciesList from '@/components/SpeciesList.vue';
+import { defineAsyncComponent } from "vue";
+import LoadingComponent from "../components/LoadingComponent.vue";
+import ErrorComponent from "../components/ErrorComponent.vue";
+const AsyncComp = defineAsyncComponent({
+	loader: () => import("@/components/SpeciesList.vue"),
+
+	loadingComponent: LoadingComponent,
+
+	delay: 200,
+	errorComponent: ErrorComponent,
+
+	timeout: 3000,
+});
+
 </script>
 
 <style>

@@ -1,4 +1,6 @@
 <template>
+	<div v-if="loading"><LoadingComponent /></div>
+	<div v-if="error" class="error">{{ error }}</div>
 	<div v-if="planet" class="main">
 		<h2>Planetary data</h2>
 		<div>
@@ -22,9 +24,7 @@
 				<tr>
 					<td>Climate:</td>
 					<td>
-						{{
-							planet.climate.charAt(0).toUpperCase() + planet.climate.slice(1)
-						}}
+						{{ capitalize(planet.climate) }}
 					</td>
 				</tr>
 				<tr>
@@ -34,9 +34,7 @@
 				<tr>
 					<td>Terrain:</td>
 					<td>
-						{{
-							planet.terrain.charAt(0).toUpperCase() + planet.terrain.slice(1)
-						}}
+						{{ capitalize(planet.terrain) }}
 					</td>
 				</tr>
 				<tr>
@@ -62,31 +60,38 @@
 			</router-link>
 		</div>
 	</div>
-	<div v-else>
-		<p>Data loading...</p>
-	</div>
 </template>
 
 <script setup>
 import { onMounted, ref } from "vue";
 import { useRoute } from "vue-router";
+import LoadingComponent from "./LoadingComponent.vue";
 
 const planet = ref();
 const route = useRoute();
+const loading = ref(false);
+const error = ref(null);
 
 const id = route.params.id;
+function capitalize(word) {
+	return word.charAt(0).toUpperCase() + word.slice(1);
+}
 async function getData() {
 	try {
 		const url = `https://swapi.info/api/planets/${id}`;
-		const response = await fetch(url);
+		const response = await fetch(url, {
+			signal: AbortSignal.timeout(500),
+		});
 		if (!response.ok) {
 			throw new Error(`Response status: ${response.status}`);
 		}
 
 		const json = await response.json();
 		planet.value = json;
-	} catch (error) {
-		console.error(error.message);
+	} catch (err) {
+		error.value = err.toString();
+	} finally {
+		loading.value = false;
 	}
 }
 
@@ -94,48 +99,5 @@ onMounted(getData);
 </script>
 
 <style scoped>
-.main {
-	height: 85vh;
-	background-color: #30303033;
-}
-h2 {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	margin: 10px;
-	color: rgb(255, 232, 31);
-	letter-spacing: 0.1rem;
-}
-div {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
-	margin: 5px;
-	color: rgb(255, 232, 31);
-	font-size: 1.4rem;
-	letter-spacing: 0.1rem;
-}
-td {
-	padding: 5px 20px;
-	font-weight: bold;
-}
-.btn {
-	margin: 20px;
-	padding: 10px 20px;
-	color: rgb(255, 232, 31);
-	font-size: 18px;
-	border: 1px solid rgb(255, 232, 31);
-	border-radius: 5px;
-	box-shadow: 1px 1px 2px rgb(255, 232, 31);
-	transition: 0.3s;
-}
-.btn:hover {
-	color: rgb(255, 255, 255);
-	background-color: #6b6a23;
-}
-.btn:active {
-	border: none;
-	scale: 0.95;
-}
+@import "../assets/styleDetails.css";
 </style>
