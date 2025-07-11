@@ -1,55 +1,47 @@
 <template>
-	<div class="container-fluid px-4 text-center">
-		<h2 class="text-center my-4">Species list</h2>
-		<div class="row">
-			<div
-				v-for="(type, index) in species"
-				:key="index"
-				class="list-unstyled col-sm-12 col-md-4 col-lg-3"
-			>
-				<router-link
-					:to="`/species/${index + 1}`"
-					class="text-decoration-none btn"
-				>
-					{{ type.name }}
-				</router-link>
-			</div>
-		</div>
-	</div>
+  <div v-if="error">Oops! Error encountered: {{ err.value }}</div>
+  <div v-else-if="data">
+   <div class="container-fluid px-4 text-center">
+    <h2 class="text-center my-4">Species list</h2>
+    <div class="row">
+      <div
+          v-for="(data, index) in species"
+          :key="index"
+          class="list-unstyled col-sm-12 col-md-4 col-lg-3"
+      >
+        <router-link
+            :to="`/species/${index + 1}`"
+            class="text-decoration-none btn"
+        >
+          {{ type.name }}
+        </router-link>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div v-else>Loading...</div>
 </template>
 
 <script setup>
-import { ref, onMounted } from "vue";
+import {ref, onMounted, watch } from "vue";
+import {useFetch} from "./useData.js";
 
+const url = "https://swapi.info/api/species";
 const species = ref([]);
 
-async function getData() {
-	try {
-		const url = "https://swapi.info/api/species";
-		const response = await fetch(url);
-		if (!response.ok) {
-			throw new Error(`Response status: ${response.status}`);
-		}
+const { data, error } = useFetch(url)
 
-		const json = await response.json();
+watch(data, () => {
+  if(data) {
+    console.log(data.value[1])
+  }
+})
 
-		class Type {
-			constructor(name, urlType) {
-				this.name = name;
-				this.url = urlType;
-			}
-		}
-		json.forEach((typeData) => {
-			const type = new Type(typeData.name, typeData.url);
 
-			species.value.push(type);
-		});
-	} catch (error) {
-		console.error(error.message);
-	}
-}
 
-onMounted(getData);
+
+
+
 </script>
 
 <style scoped>
