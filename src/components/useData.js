@@ -10,7 +10,7 @@ export  function useFetch (url) {
         data.value = json
     })
     .catch(err => {
-        error.value = err.toString()
+        error.value = err.value()
     })
     return {
         data,error
