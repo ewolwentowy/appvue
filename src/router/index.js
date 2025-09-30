@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
-const People = () => import('../views/People.vue') ;
-const Planets = () => import('../views/Planets.vue') ;
-const Species = () => import('../views/Species.vue') ;
+import People from "../views/People.vue";
+import Planets from "../views/Planets.vue";
+import Species from "../views/Species.vue";
 import Home from "../views/Home.vue";
 import PeopleDetails from "@/components/PeopleDetails.vue";
 import NotFoundViev from "@/components/NotFoundViev.vue";

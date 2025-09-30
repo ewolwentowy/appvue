@@ -1,9 +1,12 @@
 <template>
-  
+
   <div class="error">
-  <div>We are experiencing a temporary issue with the page. Please try again in a few minutes.</div>
+  <div> {{error}}</div>
   </div>
 </template>
+<script setup>
+defineProps({error: String})
+</script>
 
 <style scoped>
 .error {

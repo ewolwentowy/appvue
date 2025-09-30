@@ -1,21 +1,9 @@
 <template>
-	<AsyncComp />
+	<PlanetList />
 </template>
 
 <script setup>
-import { defineAsyncComponent } from "vue";
-import LoadingComponent from "../components/LoadingComponent.vue";
-import ErrorComponent from "../components/ErrorComponent.vue";
-const AsyncComp = defineAsyncComponent({
-	loader: () => import("@/components/PlanetList.vue"),
-
-	loadingComponent: LoadingComponent,
-
-	delay: 200,
-	errorComponent: ErrorComponent,
-
-	timeout: 3000,
-});
+import PlanetList from "@/components/PlanetList.vue";
 </script>
 
 <style></style>
