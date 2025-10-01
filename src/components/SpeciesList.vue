@@ -30,6 +30,7 @@
 <script setup>
 
 import {useFetch} from "./useData.js";
+
 import LoadingComponent from "@/components/LoadingComponent.vue";
 import ErrorComponent from "@/components/ErrorComponent.vue";
 

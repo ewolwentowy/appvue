@@ -91,6 +91,7 @@ function capitalize(word) {
 }
 
 const {data, error, loading} = useFetch(url)
+
 watch(data, (newData) => {
   species.value = newData;
 })
