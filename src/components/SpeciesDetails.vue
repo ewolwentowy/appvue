@@ -8,7 +8,7 @@
   <div v-else-if="species" class="main">
     <h2 >Species data</h2>
       <div class="container text-center">
-        <div class="row justify-content-center    ">
+        <div class="row justify-content-center">
           <div class="col-3 my-1">
             Species:
           </div>

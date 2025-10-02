@@ -7,45 +7,73 @@
   </div>
   <div v-else-if="planet" class="main">
     <h2>Planetary data</h2>
-    <div>
-      <table>
-        <tr>
-          <td>Name:</td>
-          <td>{{ planet.name }}</td>
-        </tr>
-        <tr>
-          <td>Rotation period:</td>
-          <td>{{ planet.rotation_period }}</td>
-        </tr>
-        <tr>
-          <td>Orbital period:</td>
-          <td>{{ planet.orbital_period }}</td>
-        </tr>
-        <tr>
-          <td>Diameter:</td>
-          <td>{{ planet.diameter }}</td>
-        </tr>
-        <tr>
-          <td>Climate:</td>
-          <td>
-            {{ capitalize(planet.climate) }}
-          </td>
-        </tr>
-        <tr>
-          <td>Gravity:</td>
-          <td>{{ planet.gravity }}</td>
-        </tr>
-        <tr>
-          <td>Terrain:</td>
-          <td>
-            {{ capitalize(planet.terrain) }}
-          </td>
-        </tr>
-        <tr>
-          <td>Surface water:</td>
-          <td>{{ planet.surface_water }}</td>
-        </tr>
-      </table>
+    <div class="container text-center">
+      <div class="row justify-content-center">
+        <div class="col-3 my-1">
+          Name:
+        </div>
+        <div class="col-3 my-1">
+          {{ planet.name }}
+        </div>
+      </div>
+      <div class="row justify-content-center ">
+        <div class="col-3 my-1">
+          Rotation period:
+        </div>
+        <div class="col-3 my-1">
+          {{ planet.rotation_period }}
+        </div>
+      </div>
+      <div class="row justify-content-center ">
+        <div class="col-3 my-1">
+          Orbital period:
+        </div>
+        <div class="col-3 my-1">
+          {{ planet.orbital_period }}
+        </div>
+      </div>
+      <div class="row justify-content-center ">
+        <div class="col-3 my-1">
+          Diameter:
+        </div>
+        <div class="col-3 my-1">
+          {{ planet.diameter }}
+        </div>
+      </div>
+      <div class="row justify-content-center ">
+        <div class="col-3 my-1">
+          Climate:
+        </div>
+        <div class="col-3 my-1">
+          {{ capitalize(planet.climate) }}
+        </div>
+      </div>
+      <div class="row justify-content-center ">
+        <div class="col-3 my-1">
+          Gravity:
+        </div>
+        <div class="col-3 my-1">
+          {{ planet.gravity }}
+        </div>
+      </div>
+      <div class="row justify-content-center ">
+        <div class="col-3 my-1">
+          Terrain:
+        </div>
+        <div class="col-3 my-1">
+          {{ capitalize(planet.terrain) }}
+        </div>
+      </div>
+      <div class="row justify-content-center ">
+        <div class="col-3 my-1">
+          Surface water:
+        </div>
+        <div class="col-3 my-1">
+          {{ planet.surface_water }}
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid text-center">
       <router-link to="/planets" class="btn text-decoration-none">
         Back to the list
         <svg
@@ -82,6 +110,7 @@ const url = `https://swapi.info/api/planets/${id}`;
 function capitalize(word) {
   return word.charAt(0).toUpperCase() + word.slice(1);
 }
+
 const {data, error, loading} = useFetch(url)
 
 watch(data, (newData) => {
