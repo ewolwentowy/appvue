@@ -7,70 +7,68 @@
   </div>
   <div v-else-if="species" class="main">
     <h2 >Species data</h2>
-    <div >
-
       <div class="container text-center">
         <div class="row justify-content-center    ">
-          <div class="col-2">
+          <div class="col-3 my-1">
             Species:
           </div>
-          <div class="col-2">
+          <div class="col-3 my-1">
             {{ species.name }}
           </div>
         </div>
         <div class="row justify-content-center ">
-          <div class="col-2">
+          <div class="col-3 my-1">
             Classification:
           </div>
-          <div class="col-2">
+          <div class="col-3 my-1">
             {{ capitalize(species.classification) }}
           </div>
         </div>
         <div class="row justify-content-center ">
-          <div class="col-2">
+          <div class="col-3 my-1">
             Designation:
           </div>
-          <div class="col-2">
+          <div class="col-3 my-1">
             {{ capitalize(species.designation) }}
           </div>
         </div>
         <div class="row justify-content-center ">
-          <div class="col-2">
+          <div class="col-3 my-1">
             Average height:
           </div>
-          <div class="col-2">
+          <div class="col-3 my-1">
             {{ capitalize(species.average_height) }}
           </div>
         </div>
         <div class="row justify-content-center ">
-          <div class="col-2">
+          <div class="col-3 my-1">
             Skin colors:
           </div>
-          <div class="col-2">
+          <div class="col-3 my-1">
             {{ capitalize(species.skin_colors) }}
           </div>
         </div>
         <div class="row justify-content-center ">
-          <div class="col-2">
+          <div class="col-3 my-1">
             Hair colors:
           </div>
-          <div class="col-2">
+          <div class="col-3 my-1">
             {{ capitalize(species.hair_colors) }}
           </div>
         </div>
         <div class="row justify-content-center ">
-          <div class="col-2">
+          <div class="col-3 my-1">
             Eye colors:
           </div>
-          <div class="col-2">
+          <div class="col-3 my-1">
             {{ capitalize(species.eye_colors) }}
           </div>
         </div>
         <div class="row justify-content-center ">
-          <div class="col-2">
+          <div class="col-3 my-1">
             Average lifespan:
           </div>
-          <div class="col-2">
+          <div class="col-3 my-1">
             {{ species.average_lifespan }}
           </div>
         </div>
@@ -94,7 +92,6 @@
         </router-link>
       </div>
     </div>
-  </div>
 </template>
 
 <script setup>

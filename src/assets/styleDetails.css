@@ -1,5 +1,5 @@
 .main {
-	height: 70vh;
+	height: 73vh;
 	background-color: #30303000;
 }
 
@@ -7,19 +7,15 @@ h2 {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	margin: 150px 20px 20px 20px;
+	margin: 130px 20px 20px 20px;
 	letter-spacing: 0.1rem;
 	color: rgb(255, 232, 31);
 }
 div {
-	/*display: flex;*/
-	/*justify-content: center;*/
-	/*align-items: center;*/
-	/*flex-direction: column;*/
-	/*margin: 5px;*/
 	font-size: 1.4rem;
 	letter-spacing: 0.1rem;
 	color: rgb(255, 232, 31);
+	font-weight: bold;
 }
 td {
 	padding: 5px 20px;
