@@ -10,15 +10,21 @@ export function useFetch(url) {
         loading.value = true;
 
         try {
-            const response = await fetch(url);
+            const controller = new AbortController();
+            const timeoutSignal = AbortSignal.timeout(5000);
+            const response = await fetch(url, {
+                signal: AbortSignal.any([controller.signal, timeoutSignal]),
+            });
             if(!response.ok) {
                 throw new Error(`Response status: ${response.status}`);
             }
 
-            const json = await response.json();
-            data.value = json;
+            data.value = await response.json();
         } catch (err) {
-            error.value = err.message;
+            if(err.name === "AbortError") {
+            } else if(err.name === "TimeoutError") {
+            }
+            error.value = `Error: ${err.message}`;
         } finally {
             loading.value = false;
         }
