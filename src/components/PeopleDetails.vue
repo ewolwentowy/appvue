@@ -7,45 +7,65 @@
   </div>
   <div v-else-if="person" class="main">
     <h2>Character data</h2>
-    <div>
-      <table>
-        <tr>
-          <td>Height:</td>
-          <td>{{ person.height }}</td>
-        </tr>
-        <tr>
-          <td>Mass:</td>
-          <td>{{ person.mass }}</td>
-        </tr>
-        <tr>
-          <td>Hair color:</td>
-          <td>
-            {{ capitalize(person.hair_color) }}
-          </td>
-        </tr>
-        <tr>
-          <td>Skin color:</td>
-          <td>
-            {{ capitalize(person.skin_color) }}
-          </td>
-        </tr>
-        <tr>
-          <td>Eye color:</td>
-          <td>
-            {{ capitalize(person.eye_color) }}
-          </td>
-        </tr>
-        <tr>
-          <td>Birth year:</td>
-          <td>{{ person.birth_year }}</td>
-        </tr>
-        <tr>
-          <td>Gender:</td>
-          <td>
-            {{ capitalize(person.gender) }}
-          </td>
-        </tr>
-      </table>
+    <div class="container text-center">
+      <div class="row justify-content-center">
+        <div class="col-3 my-1">
+          Height:
+        </div>
+        <div class="col-3 my-1">
+          {{ person.height }}
+        </div>
+      </div>
+      <div class="row justify-content-center ">
+        <div class="col-3 my-1">
+          Mass:
+        </div>
+        <div class="col-3 my-1">
+          {{ person.mass }}
+        </div>
+      </div>
+      <div class="row justify-content-center ">
+        <div class="col-3 my-1">
+          Hair color:
+        </div>
+        <div class="col-3 my-1">
+          {{ capitalize(person.hair_color) }}
+        </div>
+      </div>
+      <div class="row justify-content-center ">
+        <div class="col-3 my-1">
+          Skin color:
+        </div>
+        <div class="col-3 my-1">
+          {{ capitalize(person.skin_color) }}
+        </div>
+      </div>
+      <div class="row justify-content-center ">
+        <div class="col-3 my-1">
+          Eye color:
+        </div>
+        <div class="col-3 my-1">
+          {{ capitalize(person.eye_color) }}
+        </div>
+      </div>
+      <div class="row justify-content-center ">
+        <div class="col-3 my-1">
+          Birth year:
+        </div>
+        <div class="col-3 my-1">
+          {{ person.birth_year }}
+        </div>
+      </div>
+      <div class="row justify-content-center ">
+        <div class="col-3 my-1">
+          Gender:
+        </div>
+        <div class="col-3 my-1">
+          {{ capitalize(person.gender) }}
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid text-center">
       <router-link to="/people" class="btn text-decoration-none">
         Back to the list
         <svg
