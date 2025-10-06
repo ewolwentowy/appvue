@@ -28,24 +28,24 @@
         <div class="col-3 my-1">
           Hair color:
         </div>
-        <div class="col-3 my-1">
-          {{ capitalize(person.hair_color) }}
+        <div class="col-3 my-1 text-capitalize">
+          {{ person.hair_color }}
         </div>
       </div>
       <div class="row justify-content-center ">
         <div class="col-3 my-1">
           Skin color:
         </div>
-        <div class="col-3 my-1">
-          {{ capitalize(person.skin_color) }}
+        <div class="col-3 my-1 text-capitalize">
+          {{ person.skin_color }}
         </div>
       </div>
       <div class="row justify-content-center ">
         <div class="col-3 my-1">
           Eye color:
         </div>
-        <div class="col-3 my-1">
-          {{ capitalize(person.eye_color) }}
+        <div class="col-3 my-1 text-capitalize">
+          {{ person.eye_color }}
         </div>
       </div>
       <div class="row justify-content-center ">
@@ -60,8 +60,8 @@
         <div class="col-3 my-1">
           Gender:
         </div>
-        <div class="col-3 my-1">
-          {{ capitalize(person.gender) }}
+        <div class="col-3 my-1 text-capitalize">
+          {{ person.gender }}
         </div>
       </div>
     </div>
@@ -98,10 +98,6 @@ const route = useRoute();
 
 const id = route.params.id;
 const url = `https://swapi.info/api/people/${id}`;
-
-function capitalize(word) {
-  return word.charAt(0).toUpperCase() + word.slice(1);
-}
 
 const {data, error, loading} = useFetch(url)
 

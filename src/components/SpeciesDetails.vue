@@ -20,48 +20,48 @@
           <div class="col-3 my-1">
             Classification:
           </div>
-          <div class="col-3 my-1">
-            {{ capitalize(species.classification) }}
+          <div class="col-3 my-1 text-capitalize">
+            {{ species.classification }}
           </div>
         </div>
         <div class="row justify-content-center ">
           <div class="col-3 my-1">
             Designation:
           </div>
-          <div class="col-3 my-1">
-            {{ capitalize(species.designation) }}
+          <div class="col-3 my-1 text-capitalize">
+            {{ species.designation }}
           </div>
         </div>
         <div class="row justify-content-center ">
           <div class="col-3 my-1">
             Average height:
           </div>
-          <div class="col-3 my-1">
-            {{ capitalize(species.average_height) }}
+          <div class="col-3 my-1 text-capitalize">
+            {{ species.average_height }}
           </div>
         </div>
         <div class="row justify-content-center ">
           <div class="col-3 my-1">
             Skin colors:
           </div>
-          <div class="col-3 my-1">
-            {{ capitalize(species.skin_colors) }}
+          <div class="col-3 my-1 text-capitalize">
+            {{ species.skin_colors }}
           </div>
         </div>
         <div class="row justify-content-center ">
           <div class="col-3 my-1">
             Hair colors:
           </div>
-          <div class="col-3 my-1">
-            {{ capitalize(species.hair_colors) }}
+          <div class="col-3 my-1 text-capitalize">
+            {{ species.hair_colors }}
           </div>
         </div>
         <div class="row justify-content-center ">
           <div class="col-3 my-1">
             Eye colors:
           </div>
-          <div class="col-3 my-1">
-            {{ capitalize(species.eye_colors) }}
+          <div class="col-3 my-1 text-capitalize">
+            {{ species.eye_colors }}
           </div>
         </div>
         <div class="row justify-content-center ">
@@ -100,16 +100,12 @@ import {useFetch} from "@/components/useData.js";
 import {ref, watch} from "vue";
 import LoadingComponent from "./LoadingComponent.vue";
 import ErrorComponent from "@/components/ErrorComponent.vue";
-
+// sprawdzić alternatyne podejścia co funkcji capitalize- 1. BS 2. computed
 const route = useRoute();
 const species = ref({});
 
 const id = route.params.id;
 const url = `https://swapi.info/api/species/${id}`;
-
-function capitalize(word) {
-  return word.charAt(0).toUpperCase() + word.slice(1);
-}
 
 const {data, error, loading} = useFetch(url)
 

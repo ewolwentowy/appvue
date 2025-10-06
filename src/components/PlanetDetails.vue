@@ -44,8 +44,8 @@
         <div class="col-3 my-1">
           Climate:
         </div>
-        <div class="col-3 my-1">
-          {{ capitalize(planet.climate) }}
+        <div class="col-3 my-1 text-capitalize">
+          {{ planet.climate }}
         </div>
       </div>
       <div class="row justify-content-center ">
@@ -60,8 +60,8 @@
         <div class="col-3 my-1">
           Terrain:
         </div>
-        <div class="col-3 my-1">
-          {{ capitalize(planet.terrain) }}
+        <div class="col-3 my-1 text-capitalize">
+          {{ planet.terrain }}
         </div>
       </div>
       <div class="row justify-content-center ">
@@ -106,10 +106,6 @@ const route = useRoute();
 
 const id = route.params.id;
 const url = `https://swapi.info/api/planets/${id}`;
-
-function capitalize(word) {
-  return word.charAt(0).toUpperCase() + word.slice(1);
-}
 
 const {data, error, loading} = useFetch(url)
 
