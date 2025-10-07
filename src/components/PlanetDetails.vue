@@ -45,7 +45,7 @@
           Climate:
         </div>
         <div class="col-3 my-1">
-          {{ toUpper2 }}
+          {{ Climate }}
         </div>
       </div>
       <div class="row justify-content-center ">
@@ -61,7 +61,7 @@
           Terrain:
         </div>
         <div class="col-3 my-1">
-          {{ toUpper1 }}
+          {{ Terrain }}
         </div>
       </div>
       <div class="row justify-content-center ">
@@ -101,24 +101,20 @@ import {useFetch} from "@/components/useData.js";
 import LoadingComponent from "./LoadingComponent.vue";
 import ErrorComponent from "@/components/ErrorComponent.vue";
 
-
-
 const planet = ref({});
 const route = useRoute();
 
 const id = route.params.id;
 const url = `https://swapi.info/api/planets/${id}`;
-
-
 const {data, error, loading} = useFetch(url)
 
 watch(data, (newData) => {
   planet.value = newData;
 })
-const toUpper1 = computed(() => {
+const Terrain = computed(() => {
    return planet.value.terrain.charAt(0).toUpperCase() + planet.value.terrain.slice(1);
 })
-const toUpper2 = computed(() => {
+const Climate = computed(() => {
    return planet.value.climate.charAt(0).toUpperCase() + planet.value.climate.slice(1);
 })
 
